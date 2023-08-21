@@ -1,22 +1,14 @@
 import { useState } from "react";
-import reactLogo from "@/assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
+
+import reactLogo from "@/assets/react.svg";
 import './index.css';
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("greet", { name }));
-    console.log(await invoke("get_pic", { size:name-'0' }))
-  }
-
+  
   return (
     <div className="container">
-      <h1>Welcome to Tauri!</h1>
-
+      <h1>Welcome to Lemon tools!</h1>
       <div className="row">
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo vite" alt="Vite logo" />
@@ -28,8 +20,6 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-    
-      
     </div>
   );
 }
