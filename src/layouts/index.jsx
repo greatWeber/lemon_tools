@@ -8,11 +8,14 @@ import {
   UploadOutlined,
   PictureOutlined,
   HomeOutlined,
+  AppleOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu, Button, theme } from 'antd';
 import './index.css';
+import { routes } from '../router';
 
 const { Header, Sider, Content } = Layout;
+
 
 const Layouts = () => {
   const navigate = useNavigate();
@@ -21,18 +24,11 @@ const Layouts = () => {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const menu = [
-    {
-      key: '/index',
-      icon: <HomeOutlined />,
-      label: '首页',
-    },
-    {
-      key: '/create-icon',
-      icon: <PictureOutlined />,
-      label: '生成logo',
-    },
-  ];
+  const menu = [...routes];
+  menu.forEach(item=>{ 
+    item.key = item.path 
+  })
+ 
 
   const onMenuClick = (item)=> {
     // console.log(item);

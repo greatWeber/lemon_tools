@@ -2,10 +2,12 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod create_icon;
+mod sys;
 
 use std::process::Command;
 
 use serde::Serialize;
+use sys::SysInfo;
 
 
 #[derive(Serialize)]
@@ -31,9 +33,15 @@ async fn create_icon_create(base64: &str,sizes: Vec<String>,path: &str,format: &
     
 }
 
+#[tauri::command]
+fn get_system_info() -> SysInfo{
+   let sys_info = sys::get_system_info();
+   sys_info
+}
+
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![create_icon_create])
+        .invoke_handler(tauri::generate_handler![create_icon_create,get_system_info])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
