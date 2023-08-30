@@ -13,6 +13,7 @@ import Layouts from "@/layouts";
 import Index from '@/pages/index';
 import CreateIcon from '@/pages/create-icon';
 import SysInfo from '@/pages/sys-info';
+import Calendar from '@/pages/calendar';
 
 export const routes = [
   {
@@ -26,6 +27,12 @@ export const routes = [
     icon: <PictureOutlined />,
     label: '生成logo',
     element:<CreateIcon />
+  },
+  {
+    path: '/calendar',
+    icon: <PictureOutlined />,
+    label: '日历',
+    element:<Calendar />
   },
   {
     path: '/sys-info',

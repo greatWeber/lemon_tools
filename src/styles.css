@@ -67,3 +67,9 @@ body {
 .ant-layout {
   height: 100vh;
 }
+
+.flex-between {
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+}

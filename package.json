@@ -19,6 +19,9 @@
   "devDependencies": {
     "@tauri-apps/cli": "^1.4.0",
     "@vitejs/plugin-react": "^4.0.3",
+    "antd-style": "^3.4.4",
+    "dayjs": "^1.11.9",
+    "lunisolar": "^2.2.2",
     "rc-tween-one": "^3.0.6",
     "vite": "^4.4.4"
   }
