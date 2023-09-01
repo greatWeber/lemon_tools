@@ -1,12 +1,38 @@
 
-import chuxi from '@/assets/images/chuxi.jpeg';
-import yuandan from '@/assets/images/yuandan.jpg';
-import chunjie from '@/assets/images/chunjie.jpg';
-import qingming from '@/assets/images/qingming.jpg';
-import wuyi from '@/assets/images/wuyi.jpeg';
-import duanwu from '@/assets/images/duanwu.jpg';
-import zhongqiu from '@/assets/images/zhongqiu.jpg';
-import guoqing from '@/assets/images/guoqing.jpg';
+import chuxi from '@/assets/images/festival/chuxi.jpeg';
+import yuandan from '@/assets/images/festival/yuandan.jpg';
+import chunjie from '@/assets/images/festival/chunjie.jpg';
+import qingming from '@/assets/images/festival/qingming.jpg';
+import wuyi from '@/assets/images/festival/wuyi.jpeg';
+import duanwu from '@/assets/images/festival/duanwu.jpg';
+import zhongqiu from '@/assets/images/festival/zhongqiu.jpg';
+import guoqing from '@/assets/images/festival/guoqing.jpg';
+
+
+import lichun from '@/assets/images/solarterm/lichun.jpg';
+import yushui from '@/assets/images/solarterm/yushui.jpg';
+import jingzhe from '@/assets/images/solarterm/jingzhe.jpg';
+import chunfen from '@/assets/images/solarterm/chunfen.jpg';
+import qingming_2 from '@/assets/images/solarterm/qingming.jpg';
+import guyu from '@/assets/images/solarterm/guyu.jpg';
+import lixia from '@/assets/images/solarterm/lixia.jpg';
+import xiaoman from '@/assets/images/solarterm/xiaoman.jpg';
+import manzhong from '@/assets/images/solarterm/manzhong.jpg';
+import xiazhi from '@/assets/images/solarterm/xiazhi.jpg';
+import xiaoshu from '@/assets/images/solarterm/xiaoshu.jpg';
+import dashu from '@/assets/images/solarterm/dashu.jpg';
+import liqiu from '@/assets/images/solarterm/liqiu.jpg';
+import chushu from '@/assets/images/solarterm/chushu.jpg';
+import bailu from '@/assets/images/solarterm/bailu.jpg';
+import qiufen from '@/assets/images/solarterm/qiufen.jpg';
+import hanlu from '@/assets/images/solarterm/hanlu.jpg';
+import shuangjiang from '@/assets/images/solarterm/shuangjiang.jpg';
+import lidong from '@/assets/images/solarterm/lidong.jpg';
+import xiaoxue from '@/assets/images/solarterm/xiaoxue.jpg';
+import daxue from '@/assets/images/solarterm/daxue.jpg';
+import dongzhi from '@/assets/images/solarterm/dongzhi.jpg';
+import xiaohan from '@/assets/images/solarterm/xiaohan.jpg';
+import dahan from '@/assets/images/solarterm/dahan.jpg';
 
 export const festivalData = {
   '元旦':{
@@ -41,4 +67,103 @@ export const festivalData = {
     image: guoqing,
     content:"“国庆”一词，本指国家喜庆之事，最早见于西晋。西晋的文学家陆机在《五等诸侯论》一文中就曾有“国庆独飨其利，主忧莫与其害”的记载。在中国的封建时代，国家喜庆的大事，莫大过于帝王的登基、诞辰等。因而中国古代把皇帝即位、诞辰称为“国庆”。今天称国家建立的纪念日为国庆节。1949年12月2日，中央人民政府委员会第四次会议接受全国政协的建议，通过了《关于中华人民共和国国庆日的决议》，决定每年10月1日为中华人民共和国宣告成立的伟大日子，为中华人民共和国国庆日。1949年10月1日中华人民共和国成立后，国庆的庆祝形式曾几经变化。在新中国成立初期（1950─1959年），每年的国庆都举行大型庆典活动，同时举行阅兵。1960年9月，中共中央、国务院本着勤俭建国的方针，决定改革国庆制度。此后，自1960年至1970年，每年的国庆均在天安门前举行盛大的集会和群众游行活动，但未举行阅兵。1971年至1983年，每年的10月1日，北京都以大型的游园联欢活动等其他形式庆祝国庆，未进行群众游行。1984年，国庆35周年，举行了盛大的国庆阅兵和群众庆祝游行。在此后的十几年间，均采用其他形式庆祝国庆，未再举行国庆阅兵式和群众庆祝游行。1999年10月1日，国庆50周年，举行了盛大国庆阅兵和群众庆祝游行。这是中华人民共和国在20世纪举行的最后一次盛大国庆庆典。新中国成立以来，在国庆庆典上共进行过15次阅兵。分别是1949年至1959年间的11次和1984年国庆35周年、1999年国庆50周年、2009年国庆60周年、2019年国庆70周年的四次。",
   }
+}
+
+export const solarTermData = {
+  '立春':{
+    image: lichun,
+    content:'',
+  },
+  '雨水':{
+    image: yushui,
+    content:'',
+  },
+  '惊蛰':{
+    image: jingzhe,
+    content:'',
+  },
+  '春分':{
+    image: chunfen,
+    content:'',
+  },
+  '清明':{
+    image: qingming_2,
+    content:'',
+  },
+  '谷雨':{
+    image: guyu,
+    content:'',
+  },
+  '立夏':{
+    image: lichun,
+    content:'',
+  },
+  '小满':{
+    image: xiaoman,
+    content:'',
+  },
+  '芒种':{
+    image: manzhong,
+    content:'',
+  },
+  
+  '夏至':{
+    image: xiazhi,
+    content:'',
+  },
+  '小暑':{
+    image: xiaoshu,
+    content:'',
+  },
+  '大暑':{
+    image: dashu,
+    content:'',
+  },
+  '立秋':{
+    image: liqiu,
+    content:'',
+  },
+  '处暑':{
+    image: chushu,
+    content:'',
+  },
+  '白露':{
+    image: bailu,
+    content:'',
+  },
+  '秋分':{
+    image: qiufen,
+    content:'',
+  },
+  '寒露':{
+    image: hanlu,
+    content:'',
+  },
+  '霜降':{
+    image: shuangjiang,
+    content:'',
+  },
+  '立冬':{
+    image: lidong,
+    content:'',
+  },
+  '小雪':{
+    image: xiaoxue,
+    content:'',
+  },
+  '大雪':{
+    image: daxue,
+    content:'',
+  },
+  '冬至':{
+    image: dongzhi,
+    content:'',
+  },'小寒':{
+    image: xiaohan,
+    content:'',
+  },
+  '大寒':{
+    image: dahan,
+    content:'',
+  },
 }

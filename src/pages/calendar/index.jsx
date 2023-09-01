@@ -193,8 +193,6 @@ const MyCalendar = () => {
       });
     }
     if (info.type === 'month') {
-      // Due to the fact that a solar month is part of the lunar month X and part of the lunar month X+1,
-      // when rendering a month, always take X as the lunar month of the month
       const d2 = lunisolar(new Date(date.get('year'), date.get('month')));
       const month = d2.lunar.getMonthName();
       return (
@@ -262,7 +260,7 @@ const MyCalendar = () => {
                 <Col>
                   <Select
                     size="small"
-                    dropdownMatchSelectWidth={false}
+                    popupMatchSelectWidth={false}
                     className="my-year-select"
                     value={year}
                     options={options}
@@ -276,7 +274,7 @@ const MyCalendar = () => {
                 <Col>
                   <Select
                     size="small"
-                    dropdownMatchSelectWidth={false}
+                    popupMatchSelectWidth={false}
                     value={month}
                     options={monthOptions}
                     onChange={(newMonth) => {

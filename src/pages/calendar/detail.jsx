@@ -3,7 +3,7 @@ import React, { useState ,useRef, useEffect} from 'react';
 import { Drawer,Tag,Space,Divider,List,Input,Button,Image } from 'antd';
 import {CloseOutlined} from '@ant-design/icons';
 import lunisolar from 'lunisolar';
-import {festivalData} from './const';
+import {festivalData, solarTermData} from './const';
 
 
 
@@ -15,6 +15,7 @@ export default function Detail(props){
   const d = lunisolar(date.toDate());
   const e5 = d.char8.day.stem.e5;
   const branch = d.char8.year.branch;
+  const solarTerm = d.solarTerm?.name;
 
   let festival;
   const h = holidays && holidays[date.format('YYYY-MM-DD')];
@@ -23,11 +24,6 @@ export default function Detail(props){
       festival = h.type === 'festival'? h.name:'';
     }
 
-  
-
-  // const _ = formatHoliday(holidays);
-
-  // const [days,setDays] = useState(JSON.stringify(_));
 
   const [list,setList] = useState([]);
   const [value, setValue] = useState('');
@@ -118,6 +114,12 @@ export default function Detail(props){
         <Divider orientation="left">{festival}</Divider>
         <Image src={festivalData[festival]?.image}></Image>
         <p>{festivalData[festival]?.content}</p>
+      </>}
+
+      {solarTerm && <>
+        <Divider orientation="left">{solarTerm}</Divider>
+        <Image src={solarTermData[solarTerm]?.image}></Image>
+        <p>{solarTermData[solarTerm]?.content}</p>
       </>}
       
     </Drawer>
