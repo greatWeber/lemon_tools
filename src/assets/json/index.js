@@ -17,9 +17,11 @@ async function getModule(){
   return jsonObj;
 }
 
-const jsonObj = await getModule();
+// const jsonObj = await getModule();
 
 // console.log('jsonObj',jsonObj);
 
-export default jsonObj;
+// export default jsonObj;
+
+export default getModule;
 

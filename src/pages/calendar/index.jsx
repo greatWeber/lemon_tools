@@ -5,12 +5,11 @@ import zhCn from 'lunisolar/locale/zh-cn';
 import { createStyles } from 'antd-style';
 import classNames from 'classnames';
 import { Calendar, Col, Radio, Row, Select,Button } from 'antd';
+import { isPermissionGranted, requestPermission, sendNotification } from '@tauri-apps/api/notification';
 import Detail from './detail';
 
-import jsonObj from  '@/assets/json/index.js';
+import getModule from  '@/assets/json/index.js';
 import {formatHoliday} from '@/utils/common.js';
-
-console.log(jsonObj);
 
 
 lunisolar.locale(zhCn);
@@ -136,10 +135,40 @@ const MyCalendar = () => {
   const [openDetail, setOpenDetail] = useState(false);
 
   useEffect(()=>{
-    const holidays = jsonObj[year];
-    console.log('holidays',holidays);
-    setholidays(holidays);
+    getModule().then(jsonObj=>{
+      const holidays = jsonObj[year];
+      // console.log('holidays',holidays);
+      setholidays(holidays);
+    })
+    
   },[year])
+
+  // 一进来判断当日有没有待办事件，有就给系统发送消息
+  useEffect( ()=>{
+    const day = dayjs().format("YYYY-MM-DD");
+    let hasTodo = window.localStorage.getItem(day);
+    if(!hasTodo) return;
+    hasTodo = JSON.parse(hasTodo);
+    console.log("hasTodo",hasTodo);
+
+    sendMessage(hasTodo);
+    
+    async function sendMessage (hasTodo){
+      let permissionGranted = await isPermissionGranted();
+      console.log("permissionGranted",permissionGranted);
+      if (!permissionGranted) {
+        const permission = await requestPermission();
+        permissionGranted = permission === 'granted';
+      }
+      if (permissionGranted) {
+        console.log('send')
+        sendNotification({ title: day+' 待办', body: hasTodo.join(', ') });
+      }
+    }
+
+    
+
+  },[])
 
 
 

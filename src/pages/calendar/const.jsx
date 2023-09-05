@@ -1,38 +1,43 @@
 
-import chuxi from '@/assets/images/festival/chuxi.jpeg';
-import yuandan from '@/assets/images/festival/yuandan.jpg';
-import chunjie from '@/assets/images/festival/chunjie.jpg';
-import qingming from '@/assets/images/festival/qingming.jpg';
-import wuyi from '@/assets/images/festival/wuyi.jpeg';
-import duanwu from '@/assets/images/festival/duanwu.jpg';
-import zhongqiu from '@/assets/images/festival/zhongqiu.jpg';
-import guoqing from '@/assets/images/festival/guoqing.jpg';
+
+import {getImageUrl} from '@/utils/common';
+
+import chuxi from '../../assets/images/festival/chuxi.jpeg';
+import yuandan from '../../assets/images/festival/yuandan.jpg';
+import chunjie from '../../assets/images/festival/chunjie.jpg';
+import qingming from '../../assets/images/festival/qingming.jpg';
+import wuyi from '../../assets/images/festival/wuyi.jpeg';
+import duanwu from '../../assets/images/festival/duanwu.jpg';
+import zhongqiu from '../../assets/images/festival/zhongqiu.jpg';
+import guoqing from '../../assets/images/festival/guoqing.jpg';
 
 
-import lichun from '@/assets/images/solarterm/lichun.jpg';
-import yushui from '@/assets/images/solarterm/yushui.jpg';
-import jingzhe from '@/assets/images/solarterm/jingzhe.jpg';
-import chunfen from '@/assets/images/solarterm/chunfen.jpg';
-import qingming_2 from '@/assets/images/solarterm/qingming.jpg';
-import guyu from '@/assets/images/solarterm/guyu.jpg';
-import lixia from '@/assets/images/solarterm/lixia.jpg';
-import xiaoman from '@/assets/images/solarterm/xiaoman.jpg';
-import manzhong from '@/assets/images/solarterm/manzhong.jpg';
-import xiazhi from '@/assets/images/solarterm/xiazhi.jpg';
-import xiaoshu from '@/assets/images/solarterm/xiaoshu.jpg';
-import dashu from '@/assets/images/solarterm/dashu.jpg';
-import liqiu from '@/assets/images/solarterm/liqiu.jpg';
-import chushu from '@/assets/images/solarterm/chushu.jpg';
-import bailu from '@/assets/images/solarterm/bailu.jpg';
-import qiufen from '@/assets/images/solarterm/qiufen.jpg';
-import hanlu from '@/assets/images/solarterm/hanlu.jpg';
-import shuangjiang from '@/assets/images/solarterm/shuangjiang.jpg';
-import lidong from '@/assets/images/solarterm/lidong.jpg';
-import xiaoxue from '@/assets/images/solarterm/xiaoxue.jpg';
-import daxue from '@/assets/images/solarterm/daxue.jpg';
-import dongzhi from '@/assets/images/solarterm/dongzhi.jpg';
-import xiaohan from '@/assets/images/solarterm/xiaohan.jpg';
-import dahan from '@/assets/images/solarterm/dahan.jpg';
+import lichun from '../../assets/images/solarterm/lichun.jpg';
+import yushui from '../../assets/images/solarterm/yushui.jpg';
+import jingzhe from '../../assets/images/solarterm/jingzhe.jpg';
+import chunfen from '../../assets/images/solarterm/chunfen.jpg';
+import qingming_2 from '../../assets/images/solarterm/qingming.jpg';
+import guyu from '../../assets/images/solarterm/guyu.jpg';
+import lixia from '../../assets/images/solarterm/lixia.jpg';
+import xiaoman from '../../assets/images/solarterm/xiaoman.jpg';
+import manzhong from '../../assets/images/solarterm/manzhong.jpg';
+import xiazhi from '../../assets/images/solarterm/xiazhi.jpg';
+import xiaoshu from '../../assets/images/solarterm/xiaoshu.jpg';
+import dashu from '../../assets/images/solarterm/dashu.jpg';
+import liqiu from '../../assets/images/solarterm/liqiu.jpg';
+import chushu from '../../assets/images/solarterm/chushu.jpg';
+import bailu from '../../assets/images/solarterm/bailu.jpg';
+import qiufen from '../../assets/images/solarterm/qiufen.jpg';
+import hanlu from '../../assets/images/solarterm/hanlu.jpg';
+import shuangjiang from '../../assets/images/solarterm/shuangjiang.jpg';
+import lidong from '../../assets/images/solarterm/lidong.jpg';
+import xiaoxue from '../../assets/images/solarterm/xiaoxue.jpg';
+import daxue from '../../assets/images/solarterm/daxue.jpg';
+import dongzhi from '../../assets/images/solarterm/dongzhi.jpg';
+import xiaohan from '../../assets/images/solarterm/xiaohan.jpg';
+import dahan from '../../assets/images/solarterm/dahan.jpg';
+
+// const chuxi = getImageUrl('../src/assets/images/festival/chuxi.jpeg');
 
 export const festivalData = {
   '元旦':{

@@ -31,3 +31,8 @@ export const formatHoliday = (data) => {
 
   return holiday;
 }
+
+export const getImageUrl = (path) => {
+  return new URL(path, import.meta.url).href
+}
+
