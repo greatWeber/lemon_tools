@@ -1,0 +1,18 @@
+.imglist-wrapper {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.imglist-wrapper .imglist-item {
+  width: 150px;
+  min-height: 100px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 5px solid #666;
+  overflow: hidden;
+  position: relative;
+}
+
+.imglist-wrapper .imglist-active {
+  border-color: aquamarine;
+}

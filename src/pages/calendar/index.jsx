@@ -1,16 +1,20 @@
 import dayjs from 'dayjs';
-import React,{useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import lunisolar from 'lunisolar';
 import zhCn from 'lunisolar/locale/zh-cn';
 import { createStyles } from 'antd-style';
 import classNames from 'classnames';
-import { Calendar, Col, Radio, Row, Select,Button } from 'antd';
-import { isPermissionGranted, requestPermission, sendNotification } from '@tauri-apps/api/notification';
+import { Calendar, Col, Radio, Row, Select, Button } from 'antd';
+import {
+  isPermissionGranted,
+  requestPermission,
+  sendNotification,
+} from '@tauri-apps/api/notification';
+
+import { getModule } from '@/utils/common';
 import Detail from './detail';
 
-import getModule from  '@/assets/json/index.js';
-import {formatHoliday} from '@/utils/common.js';
-
+const modules = import.meta.glob('../../assets/json/*.json');
 
 lunisolar.locale(zhCn);
 const useStyle = createStyles(({ token, css, cx }) => {
@@ -53,7 +57,6 @@ const useStyle = createStyles(({ token, css, cx }) => {
       margin: auto;
       max-width: 40px;
       max-height: 40px;
-      
     `,
     today: css`
       &:before {
@@ -64,31 +67,31 @@ const useStyle = createStyles(({ token, css, cx }) => {
       position: relative;
       z-index: 1;
     `,
-    holiday:css `
+    holiday: css`
       position: absolute;
-      font-size:11px;
-      right:25%;
-      top:0;
+      font-size: 11px;
+      right: 25%;
+      top: 0;
       color: ${token.colorSuccess};
     `,
-    workingday:css `
+    workingday: css`
       position: absolute;
-      font-size:11px;
-      right:25%;
-      top:0;
+      font-size: 11px;
+      right: 25%;
+      top: 0;
       color: ${token.colorError};
     `,
-    bold:css`
+    bold: css`
       font-weight: bold;
     `,
-    todo:css`
+    todo: css`
       position: absolute;
-      left:5px;
+      left: 5px;
       top: 5px;
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background:${token.colorSuccess};
+      background: ${token.colorSuccess};
     `,
     lunar,
     current: css`
@@ -125,52 +128,46 @@ const useStyle = createStyles(({ token, css, cx }) => {
   };
 });
 
-const MyCalendar = () => {
+function MyCalendar() {
   const { styles } = useStyle({
     test: true,
   });
   const [selectDate, setSelectDate] = useState(dayjs());
-  const [year,setYear] = useState(dayjs().year());
-  const [holidays,setholidays] = useState({});
+  const [year, setYear] = useState(dayjs().year());
+  const [holidays, setholidays] = useState({});
   const [openDetail, setOpenDetail] = useState(false);
 
-  useEffect(()=>{
-    getModule().then(jsonObj=>{
-      const holidays = jsonObj[year];
+  useEffect(() => {
+    getModule(modules).then((jsonObj) => {
+      const h = jsonObj[year];
       // console.log('holidays',holidays);
-      setholidays(holidays);
-    })
-    
-  },[year])
+      setholidays(h);
+    });
+  }, [year]);
 
   // 一进来判断当日有没有待办事件，有就给系统发送消息
-  useEffect( ()=>{
-    const day = dayjs().format("YYYY-MM-DD");
+  useEffect(() => {
+    const day = dayjs().format('YYYY-MM-DD');
     let hasTodo = window.localStorage.getItem(day);
-    if(!hasTodo) return;
+    if (!hasTodo) return;
     hasTodo = JSON.parse(hasTodo);
-    console.log("hasTodo",hasTodo);
+    console.log('hasTodo', hasTodo);
 
     sendMessage(hasTodo);
-    
-    async function sendMessage (hasTodo){
+
+    async function sendMessage(hasTodo) {
       let permissionGranted = await isPermissionGranted();
-      console.log("permissionGranted",permissionGranted);
+      console.log('permissionGranted', permissionGranted);
       if (!permissionGranted) {
         const permission = await requestPermission();
         permissionGranted = permission === 'granted';
       }
       if (permissionGranted) {
-        console.log('send')
-        sendNotification({ title: day+' 待办', body: hasTodo.join(', ') });
+        console.log('send');
+        sendNotification({ title: `${day} 待办`, body: hasTodo.join(', ') });
       }
     }
-
-    
-
-  },[])
-
-
+  }, []);
 
   const onPanelChange = (value, mode) => {
     console.log(value.format('YYYY-MM-DD'), mode);
@@ -183,13 +180,13 @@ const MyCalendar = () => {
     const d = lunisolar(date.toDate());
     const lunar = d.lunar.getDayName();
     const solarTerm = d.solarTerm?.name;
-    let festival; 
+    let festival;
     let isHoliday;
     let isWorkingday;
     const h = holidays && holidays[date.format('YYYY-MM-DD')];
     // console.log('h',h,date.format('YYYY-MM-DD'))
-    if(h){
-      festival = h.type === 'festival'? h.name:'';
+    if (h) {
+      festival = h.type === 'festival' ? h.name : '';
       isHoliday = h.type === 'holiday';
       isWorkingday = h.type === 'workingday';
     }
@@ -204,18 +201,24 @@ const MyCalendar = () => {
           [styles.today]: date.isSame(dayjs(), 'date'),
         }),
         children: (
-          <div className={styles.text} onClick={()=>setOpenDetail(true)}>
+          <div className={styles.text} onClick={() => setOpenDetail(true)}>
             <div className={styles.dateCellContent}>
-              {!!hasTodo && <span className={styles.todo}></span>}
+              {!!hasTodo && <span className={styles.todo} />}
               {date.get('date')}
-              {info.type === 'date' && <div className={classNames(styles.lunar,{
-                [styles.bold]:!!festival
-              })}>
-                {festival || solarTerm || lunar}
-              </div>}
+              {info.type === 'date' && (
+                <div
+                  className={classNames(styles.lunar, {
+                    [styles.bold]: !!festival,
+                  })}
+                >
+                  {festival || solarTerm || lunar}
+                </div>
+              )}
             </div>
-            
-            {(isHoliday || festival) && <span className={styles.holiday}>休</span>}
+
+            {(isHoliday || festival) && (
+              <span className={styles.holiday}>休</span>
+            )}
             {isWorkingday && <span className={styles.workingday}>调</span>}
           </div>
         ),
@@ -230,7 +233,9 @@ const MyCalendar = () => {
             [styles.monthCellCurrent]: selectDate.isSame(date, 'month'),
           })}
         >
-          {date.get('month') + 1}月（{month}）
+          {date.get('month') + 1}
+          月（
+          {month}）
         </div>
       );
     }
@@ -313,13 +318,17 @@ const MyCalendar = () => {
                   />
                 </Col>
                 <Col>
-                  <Button size="small" onClick={()=>{
-                    const now = dayjs();
-                    onChange(now);
-                  }}>今天</Button>
+                  <Button
+                    size="small"
+                    onClick={() => {
+                      const now = dayjs();
+                      onChange(now);
+                    }}
+                  >
+                    今天
+                  </Button>
                 </Col>
                 <Col>
-                  
                   <Radio.Group
                     size="small"
                     onChange={(e) => onTypeChange(e.target.value)}
@@ -335,9 +344,13 @@ const MyCalendar = () => {
         />
       </div>
 
-      <Detail open={openDetail} date={selectDate} holidays={holidays} onClose={()=>setOpenDetail(false)}></Detail>
+      <Detail
+        open={openDetail}
+        date={selectDate}
+        holidays={holidays}
+        onClose={() => setOpenDetail(false)}
+      />
     </>
-    
   );
-};
-export default MyCalendar; 
+}
+export default MyCalendar;
