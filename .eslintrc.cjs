@@ -16,6 +16,7 @@ module.exports = {
     'react/forbid-prop-types': 0,
     'jsx-a11y/click-events-have-key-events': 0,
     'no-restricted-syntax': 0,
+    'object-curly-newline': 0,
   },
   settings: {
     'import/resolver': {

@@ -1,0 +1,12 @@
+.json-component .read-box {
+  position: relative;
+}
+
+.json-component .copy {
+  position: absolute;
+  right: 5px;
+  top: 0px;
+  z-index: 1;
+  opacity: 1;
+  cursor: pointer;
+}
