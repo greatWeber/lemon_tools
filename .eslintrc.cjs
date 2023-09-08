@@ -17,6 +17,7 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 0,
     'no-restricted-syntax': 0,
     'object-curly-newline': 0,
+    'import/no-extraneous-dependencies': 1,
   },
   settings: {
     'import/resolver': {

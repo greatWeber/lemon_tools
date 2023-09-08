@@ -6,6 +6,7 @@ import {
   CalendarOutlined,
   SettingOutlined,
   Html5Outlined,
+  AlertOutlined,
 } from '@ant-design/icons';
 
 import Index from '@/pages/index';
@@ -14,6 +15,7 @@ import SysInfo from '@/pages/sys-info';
 import Calendar from '@/pages/calendar';
 import Config from '@/pages/config';
 import Webfront from '@/pages/webfront';
+import Idea from '@/pages/idea';
 
 const routes = [
   {
@@ -45,6 +47,12 @@ const routes = [
     icon: <SettingOutlined />,
     label: '系统配置',
     element: <Config />,
+  },
+  {
+    path: '/idea',
+    icon: <AlertOutlined />,
+    label: 'idea记录',
+    element: <Idea />,
   },
   {
     path: '/sys-info',
