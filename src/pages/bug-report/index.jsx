@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable no-shadow */
+import React, { useEffect, useState, useRef } from 'react';
 import { Input, Divider, List, Switch } from 'antd';
 import {
   CheckOutlined,
@@ -12,17 +13,17 @@ export default function Idea() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    let _ = window.localStorage.getItem('ideaList');
+    let _ = window.localStorage.getItem('bugList');
     if (!_) return;
     _ = JSON.parse(_);
     setList(_);
   }, []);
 
   const setLocalStorage = (value) => {
-    window.localStorage.setItem('ideaList', JSON.stringify(value));
+    window.localStorage.setItem('bugList', JSON.stringify(value));
   };
 
-  const addIdea = () => {
+  const addBug = () => {
     if (!value) return;
     const _ = [...list];
     _.push({
@@ -53,25 +54,25 @@ export default function Idea() {
   };
 
   return (
-    <div className="idea-wrapper">
+    <div className="bug-wrapper">
       <Input
-        className="idea-input"
+        className="bug-input"
         value={value}
         size="large"
-        placeholder="idea..."
+        placeholder="bug report..."
         allowClear
         style={{ borderRadius: 20 }}
         onChange={(e) => setValue(e.target.value)}
-        onPressEnter={() => addIdea()}
+        onPressEnter={() => addBug()}
       />
 
-      <Divider orientation="center">idea list</Divider>
+      <Divider orientation="center">bug list</Divider>
       <List
         size="large"
         bordered
         dataSource={list}
         renderItem={(item) => (
-          <List.Item>
+          <List.Item style={{ fontSize: 18 }}>
             <CloseCircleOutlined onClick={() => onDelItem(item)} />
             <p>{item.content}</p>
             <Switch

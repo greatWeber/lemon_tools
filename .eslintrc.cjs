@@ -18,6 +18,7 @@ module.exports = {
     'no-restricted-syntax': 0,
     'object-curly-newline': 0,
     'import/no-extraneous-dependencies': 1,
+    'no-shadow': 0,
   },
   settings: {
     'import/resolver': {

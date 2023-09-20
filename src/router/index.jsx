@@ -7,6 +7,7 @@ import {
   SettingOutlined,
   Html5Outlined,
   AlertOutlined,
+  BugOutlined,
 } from '@ant-design/icons';
 
 import Index from '@/pages/index';
@@ -17,6 +18,7 @@ import Config from '@/pages/config';
 import Webfront from '@/pages/webfront';
 import Idea from '@/pages/idea';
 import Video from '@/pages/video';
+import BugReport from '@/pages/bug-report';
 
 const routes = [
   {
@@ -60,6 +62,12 @@ const routes = [
     icon: <AlertOutlined />,
     label: 'idea记录',
     element: <Idea />,
+  },
+  {
+    path: '/bug',
+    icon: <BugOutlined />,
+    label: 'bug报告',
+    element: <BugReport />,
   },
   {
     path: '/sys-info',
