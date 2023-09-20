@@ -10,15 +10,6 @@ export default defineConfig(async () => ({
         babelrc: true,
       },
     }),
-    // babel({
-    //   // 配置Babel选项
-    //   babelHelpers: 'bundled',
-    //   // 配置Babel插件
-    //   plugins: [
-    //     ['@babel/plugin-proposal-decorators', { legacy: true }],
-    //     ['@babel/plugin-proposal-class-properties', { loose: true }],
-    //   ],
-    // }),
   ],
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`

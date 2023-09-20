@@ -7,14 +7,20 @@ class System {
   Config = {
     opacity: 1, //背景透明度
     bgImage: '', //背景图片
+    isBgVideo: false, //是否开启背景视频
+    bgVideo: '', //背景视频的本地路径
+    videoType: '', //视频的类型
   };
+
+  @observable
+  isLock = false; //是否锁屏
 
   constructor() {
     makeAutoObservable(this);
 
     makePersistable(this, {
       name: 'System',
-      properties: ['Config'],
+      properties: ['Config', 'isLock'],
       storage: window.localStorage,
     });
   }
@@ -37,6 +43,13 @@ class System {
   setConfig(value) {
     runInAction(() => {
       this.Config = { ...value };
+    });
+  }
+
+  @action('setIsLock')
+  setIsLock(value) {
+    runInAction(() => {
+      this.isLock = value;
     });
   }
 }

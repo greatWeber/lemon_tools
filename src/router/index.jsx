@@ -16,6 +16,7 @@ import Calendar from '@/pages/calendar';
 import Config from '@/pages/config';
 import Webfront from '@/pages/webfront';
 import Idea from '@/pages/idea';
+import Video from '@/pages/video';
 
 const routes = [
   {
@@ -41,6 +42,12 @@ const routes = [
     icon: <Html5Outlined />,
     label: '前端tool',
     element: <Webfront />,
+  },
+  {
+    path: '/video',
+    icon: <Html5Outlined />,
+    label: 'video',
+    element: <Video />,
   },
   {
     path: '/config',

@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  RouterProvider,
-  createBrowserRouter,
-} from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { ConfigProvider, theme } from 'antd';
 import './App.css';
 
 import routes from '@/router';
+import { useStores } from '@/store';
 import Layouts from './layouts';
+import Keyboard from './lib/keyboard';
 
 function App() {
+  const { systemStore } = useStores();
+  const { isLock } = systemStore;
+  useEffect(() => {
+    const keyboard = new Keyboard();
+    keyboard.onLock(() => {
+      systemStore.setIsLock(!isLock);
+    });
+  }, []);
   const router = createBrowserRouter([
     {
       path: '/',

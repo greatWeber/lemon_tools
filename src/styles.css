@@ -39,10 +39,6 @@ body {
   filter: drop-shadow(0 0 2em #24c8db);
 }
 
-
-
-
-
 @media (prefers-color-scheme: dark) {
   :root {
     color: #f6f6f6;
@@ -70,6 +66,18 @@ body {
 
 .flex-between {
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: space-between;
+}
+/* 过渡动画组件样式 */
+.transition {
+  transition: all 0.5s ease-in-out;
+}
+
+.transition.enter {
+  opacity: 1;
+}
+
+.transition.exit {
+  opacity: 0;
 }

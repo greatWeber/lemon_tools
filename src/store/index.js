@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { createContext, useContext } from 'react';
 import System from './system';
 

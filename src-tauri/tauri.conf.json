@@ -18,15 +18,23 @@
         "open": true
       },
       "dialog": {
-        "all": true, 
-        "ask": true, 
-        "confirm": true, 
-        "message": true, 
-        "open": true, 
-        "save": true 
+        "all": true,
+        "ask": true,
+        "confirm": true,
+        "message": true,
+        "open": true,
+        "save": true
       },
       "path": {
         "all": true
+      },
+      "fs": {
+        "all": true
+      },
+      "protocol": {
+        "all": false,
+        "asset": true,
+        "assetScope": ["*"]
       },
       "notification": {
         "all": true
@@ -45,7 +53,7 @@
       ]
     },
     "security": {
-      "csp": null
+      "csp": "default-src 'self'; img-src 'self' asset: https://asset.localhost; media-src 'self' asset: https://asset.localhost; style-src 'unsafe-inline' 'self'"
     },
     "windows": [
       {
