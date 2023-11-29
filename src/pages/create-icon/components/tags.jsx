@@ -3,18 +3,17 @@ import { PlusOutlined } from '@ant-design/icons';
 import { TweenOneGroup } from 'rc-tween-one';
 import { Input, Tag, theme } from 'antd';
 
-
-const Tags = (props) => {
-  const {value,onChange} = props;
+function Tags(props) {
+  const { value, onChange } = props;
   const { token } = theme.useToken();
   // const [tags, setTags] = useState([]);
   const [inputVisible, setInputVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const inputRef = useRef(null);
 
-  useEffect(()=>{
-    console.log('setTags', value)
-  },[value])
+  useEffect(() => {
+    console.log('setTags', value);
+  }, [value]);
 
   useEffect(() => {
     if (inputVisible) {
@@ -74,9 +73,7 @@ const Tags = (props) => {
           marginBottom: 16,
         }}
       >
-       
-          {tagChild}
-      
+        {tagChild}
       </div>
       {inputVisible ? (
         <Input
@@ -98,5 +95,5 @@ const Tags = (props) => {
       )}
     </>
   );
-};
+}
 export default Tags;

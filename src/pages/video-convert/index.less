@@ -1,0 +1,56 @@
+.video-convert {
+  flex-direction: column;
+  .upload-box {
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    border: 5px dashed #ccc;
+  }
+
+  .upload-select {
+    height: 100%;
+    flex-direction: column;
+  }
+
+  .upload-icon {
+    font-size: 20px;
+  }
+
+  .convert-list {
+    min-width: 500px;
+    height: 60px;
+    line-height: 60px;
+    margin-top: 20px;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+
+    .type-select {
+      width: 100px;
+      .ant-select-selector {
+        height: 60px;
+        text-align: center;
+        border-radius: 0;
+        border: none;
+      }
+      .ant-select-selection-item {
+        line-height: 60px;
+      }
+      .ant-select-selection-search-input,
+      .ant-select-selection-placeholder {
+        height: 60px;
+        line-height: 60px;
+      }
+    }
+    .output-dir {
+      font-size: 14px;
+      color: var(--color);
+    }
+    .convert-start {
+      width: 60px;
+      text-align: center;
+      font-size: 30px;
+      color: aquamarine;
+    }
+  }
+}

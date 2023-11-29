@@ -3,6 +3,7 @@
 
 mod create_icon;
 mod sys;
+mod video;
 
 use std::process::Command;
 
@@ -39,9 +40,21 @@ fn get_system_info() -> SysInfo{
    sys_info
 }
 
+#[tauri::command]
+fn convert_video_format(suffix: &str, input_path: &str, output_path: &str, captions: bool) -> Result<String, String> {
+    let rs = video::convert_video_format(suffix,input_path, output_path,captions);
+    if rs.is_ok() {
+        Ok("200".to_string())
+    }else {
+        Err("500".to_string())
+    }
+}
+
+
+
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![create_icon_create,get_system_info])
+        .invoke_handler(tauri::generate_handler![create_icon_create,get_system_info,convert_video_format])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

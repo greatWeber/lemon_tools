@@ -8,6 +8,7 @@ import {
   Html5Outlined,
   AlertOutlined,
   BugOutlined,
+  VideoCameraAddOutlined,
 } from '@ant-design/icons';
 
 import Index from '@/pages/index';
@@ -19,6 +20,7 @@ import Webfront from '@/pages/webfront';
 import Idea from '@/pages/idea';
 import Video from '@/pages/video';
 import BugReport from '@/pages/bug-report';
+import VideoConvert from '../pages/video-convert';
 
 const routes = [
   {
@@ -50,6 +52,12 @@ const routes = [
     icon: <Html5Outlined />,
     label: 'video',
     element: <Video />,
+  },
+  {
+    path: '/video-convert',
+    icon: <VideoCameraAddOutlined />,
+    label: '视频格式转换',
+    element: <VideoConvert />,
   },
   {
     path: '/config',

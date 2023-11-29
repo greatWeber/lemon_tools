@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: ['plugin:react/recommended'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -17,7 +17,7 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 0,
     'no-restricted-syntax': 0,
     'object-curly-newline': 0,
-    'import/no-extraneous-dependencies': 1,
+    // 'import/no-extraneous-dependencies': 1,
     'no-shadow': 0,
   },
   settings: {

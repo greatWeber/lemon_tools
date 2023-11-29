@@ -34,7 +34,7 @@
       "protocol": {
         "all": false,
         "asset": true,
-        "assetScope": ["*"]
+        "assetScope": ["**"]
       },
       "notification": {
         "all": true
