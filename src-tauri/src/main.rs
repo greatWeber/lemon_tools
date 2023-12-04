@@ -4,6 +4,7 @@
 mod create_icon;
 mod sys;
 mod video;
+mod pic_compress;
 
 use std::process::Command;
 
@@ -15,6 +16,13 @@ use sys::SysInfo;
 struct Pic {
     width: usize,
     height: usize,
+}
+
+#[derive(Serialize)]
+struct ResultInfo<T> {
+    code: String,
+    data: T,
+    message: String
 }
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
@@ -51,10 +59,51 @@ fn convert_video_format(suffix: &str, input_path: &str, output_path: &str, capti
 }
 
 
+#[tauri::command]
+async fn compress_pic(path: &str)-> Result<ResultInfo<Option<String>>, ResultInfo<Option<String>>> {
+    let rs = pic_compress::compress_pic(path).await;
+    if rs.is_ok() {
+        Ok(ResultInfo{
+            code:"200".to_string(),
+            data: None,
+            message:"操作成功".to_string()
+        })
+    }else {
+        Err(ResultInfo{
+            code:"500".to_string(),
+            data: None,
+            message:"操作失败".to_string()
+        })
+    }
+}
+
+#[tauri::command]
+async fn compress_dir(path: &str)-> Result<ResultInfo<Option<String>>, ResultInfo<Option<String>>> {
+    let rs = pic_compress::compress_dir(path).await;
+    if rs.is_ok() {
+        Ok(ResultInfo{
+            code:"200".to_string(),
+            data: None,
+            message:"操作成功".to_string()
+        })
+    }else {
+        Err(ResultInfo{
+            code:"500".to_string(),
+            data: None,
+            message:"操作失败".to_string()
+        })
+    }
+}
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![create_icon_create,get_system_info,convert_video_format])
+        .invoke_handler(tauri::generate_handler![
+            create_icon_create,
+            get_system_info,
+            convert_video_format,
+            compress_pic,
+            compress_dir
+            ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
