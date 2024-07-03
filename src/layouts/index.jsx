@@ -31,9 +31,12 @@ function Layouts() {
 
   const LockTransition = withTransition(LockOutlined);
 
-  const menu = [...routes];
-  menu.forEach((item) => {
+  const menu = [];
+  routes.map((item) => {
     item.key = item.path;
+    if (!item.hidden) {
+      menu.push(item);
+    }
   });
 
   const onMenuClick = (item) => {

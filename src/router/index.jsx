@@ -20,7 +20,8 @@ import Webfront from '@/pages/webfront';
 import Idea from '@/pages/idea';
 import Video from '@/pages/video';
 import BugReport from '@/pages/bug-report';
-import VideoConvert from '../pages/video-convert';
+import VideoConvert from '@/pages/video-convert';
+import Finder from '@/pages/finder';
 
 const routes = [
   {
@@ -82,6 +83,12 @@ const routes = [
     icon: <AppleOutlined />,
     label: '系统信息',
     element: <SysInfo />,
+  },
+  {
+    path: '/finder',
+    icon: <AppleOutlined />,
+    label: '搜索栏',
+    element: <Finder />,
   },
 ];
 

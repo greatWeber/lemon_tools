@@ -5,8 +5,9 @@ mod create_icon;
 mod sys;
 mod video;
 mod pic_compress;
+mod search_file;
 
-use std::process::Command;
+use std::{path::PathBuf, process::Command};
 
 use serde::Serialize;
 use sys::SysInfo;
@@ -95,6 +96,26 @@ async fn compress_dir(path: &str)-> Result<ResultInfo<Option<String>>, ResultInf
     }
 }
 
+#[tauri::command]
+fn search(path: &str, search_name: &str) -> Result<ResultInfo<Vec<PathBuf>>, ResultInfo<String>> {
+    let path = PathBuf::from(path);
+    println!("path:{}, search_name:{}", path.to_str().unwrap(),search_name);
+    match search_file::search(&path, search_name) {
+        Ok(rs) => {Ok(ResultInfo{
+            code:"200".to_string(),
+            data: rs,
+            message:"操作成功".to_string()
+        })},
+        Err(err)=>{
+            Err(ResultInfo{
+                code:"500".to_string(),
+                data: err.to_string(),
+                message:"操作失败".to_string()
+            })
+        }
+    }
+}
+
 fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
@@ -102,7 +123,8 @@ fn main() {
             get_system_info,
             convert_video_format,
             compress_pic,
-            compress_dir
+            compress_dir,
+            search
             ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

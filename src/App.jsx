@@ -7,6 +7,7 @@ import routes from '@/router';
 import { useStores } from '@/store';
 import Layouts from './layouts';
 import Keyboard from './lib/keyboard';
+import Finder from './pages/finder';
 
 function App() {
   const { systemStore } = useStores();
@@ -22,6 +23,10 @@ function App() {
       path: '/',
       element: <Layouts />,
       children: routes,
+    },
+    {
+      path: '/windowFinder',
+      element: <Finder />,
     },
   ]);
   return (
