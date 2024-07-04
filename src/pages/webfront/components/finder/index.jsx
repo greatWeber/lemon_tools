@@ -8,22 +8,18 @@ export default function FinderCart(props) {
   const webview = useRef(null);
   const onOpen = () => {
     webview.current = new WebviewWindow('finder', {
-      url: '/finder',
-      height: 100,
-      width: 300,
+      url: '/windowFinder',
+      height: 400,
+      width: 500,
       focus: true,
-      hiddenTitle: false,
+      // hiddenTitle: false,
       transparent: true,
-      //   decorations: false,
+      decorations: false,
       //   titleBarStyle: 'overlay',
       alwaysOnTop: true,
       resizable: false,
     });
     console.log(webview.current);
-    // webview.current.startDragging();
-    webview.current.listen('tauri://move', (e) => {
-      console.log(e);
-    });
   };
   const onClose = () => {
     webview.current && webview.current.close();

@@ -116,6 +116,17 @@ fn search(path: &str, search_name: &str) -> Result<ResultInfo<Vec<PathBuf>>, Res
     }
 }
 
+#[tauri::command]
+fn open_finder(path: &str) -> Result<String, String> {
+    // 成功后打开目录
+    Command::new("open")
+    .arg(path)
+    .spawn()
+    .expect("Failed to open directory");
+
+    Ok("200".to_string())
+}
+
 fn main() {
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
@@ -124,7 +135,8 @@ fn main() {
             convert_video_format,
             compress_pic,
             compress_dir,
-            search
+            search,
+            open_finder
             ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
