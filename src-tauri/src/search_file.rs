@@ -1,15 +1,21 @@
+use regex::Regex;
+use std::env;
 use std::fs;
 use std::io;
-use std::env;
 use std::path::{Path, PathBuf};
-use regex::Regex;
-
 
 pub fn search(path: &Path, search_name: &str) -> io::Result<Vec<PathBuf>> {
     let mut result = Vec::new();
 
     let full_path = if path.is_relative() {
-        env::home_dir().ok_or_else(|| io::Error::new(io::ErrorKind::NotFound, "Unable to determine user's home directory"))?.join(path)
+        env::home_dir()
+            .ok_or_else(|| {
+                io::Error::new(
+                    io::ErrorKind::NotFound,
+                    "Unable to determine user's home directory",
+                )
+            })?
+            .join(path)
     } else {
         path.to_path_buf() // 如果path已经是绝对路径，则直接使用它
     };
@@ -25,14 +31,14 @@ pub fn search(path: &Path, search_name: &str) -> io::Result<Vec<PathBuf>> {
 
                 if entry_path.is_file() && re.is_match(file_name) {
                     result.push(entry_path)
-                }else if entry_path.is_dir() {
+                } else if entry_path.is_dir() {
                     traverse(&entry_path, re, result)?;
                 }
             }
         }
         Ok(())
     }
-    
+
     traverse(&full_path, &re, &mut result)?;
     // println!("search path: {:?}", env::home_dir());
     println!("search  result: {:?}", result);

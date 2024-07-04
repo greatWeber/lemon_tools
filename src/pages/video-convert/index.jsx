@@ -2,7 +2,7 @@
 /* eslint-disable indent */
 import React, { useState } from 'react';
 import { Select, FloatButton, message, Spin } from 'antd';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import {
   FolderOpenOutlined,
   CaretRightOutlined,

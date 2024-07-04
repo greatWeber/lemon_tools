@@ -2,28 +2,26 @@ import React, { useRef } from 'react';
 import { Row, Col, Button, Alert, message, Spin } from 'antd';
 import { FolderOpenOutlined, CloseSquareOutlined } from '@ant-design/icons';
 
-import { WebviewWindow } from '@tauri-apps/api/window';
+import { WebviewWindow } from '@tauri-apps/api/webviewWindow';
 
 export default function FinderCart(props) {
   const webview = useRef(null);
   const onOpen = () => {
     webview.current = new WebviewWindow('finder', {
-      url: '/finder',
+      url: '/windowFinder',
       height: 100,
       width: 300,
       focus: true,
-      hiddenTitle: false,
+      // hiddenTitle: false,
       transparent: true,
-      //   decorations: false,
+      decorations: false,
       //   titleBarStyle: 'overlay',
       alwaysOnTop: true,
       resizable: false,
+      shadow: false,
     });
     console.log(webview.current);
-    // webview.current.startDragging();
-    webview.current.listen('tauri://move', (e) => {
-      console.log(e);
-    });
+    // webview.current.setTransparent(true);
   };
   const onClose = () => {
     webview.current && webview.current.close();

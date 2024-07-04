@@ -6,7 +6,7 @@ import {
   CaretRightOutlined,
   RestOutlined,
 } from '@ant-design/icons';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import { SUCCESS_CODE } from '@/utils/conf';
 
 export default function PicCompress() {

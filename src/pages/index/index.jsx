@@ -1,11 +1,10 @@
-import { useState } from "react";
-import { invoke } from "@tauri-apps/api/tauri";
+import { useState } from 'react';
+import { invoke } from '@tauri-apps/api/core';
 
-import reactLogo from "@/assets/react.svg";
+import reactLogo from '@/assets/react.svg';
 import './index.css';
 
 function App() {
-  
   return (
     <div className="container">
       <h1>Welcome to Lemon tools!</h1>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 
 import {
   InboxOutlined,
@@ -20,8 +20,8 @@ import {
 } from 'antd';
 import Tags from './components/tags';
 
-import { open } from '@tauri-apps/api/dialog';
-import { appDir } from '@tauri-apps/api/path';
+import { open } from '@tauri-apps/plugin-dialog';
+import { appDataDir } from '@tauri-apps/api/path';
 import { SUCCESS_CODE } from '@/utils/conf';
 
 function CreateIcon() {
@@ -83,7 +83,7 @@ function CreateIcon() {
     const selected = await open({
       directory: true,
       multiple: false,
-      defaultPath: await appDir(),
+      defaultPath: await appDataDir(),
     });
 
     console.log('Selected path:', selected);

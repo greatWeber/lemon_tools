@@ -2,61 +2,55 @@
   "build": {
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build",
-    "devPath": "http://localhost:1420",
-    "distDir": "../dist",
-    "withGlobalTauri": true
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:1420"
   },
-  "package": {
-    "productName": "lemon-tools",
-    "version": "0.0.1"
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "createUpdaterArtifacts": "v1Compatible"
   },
-  "tauri": {
-    "allowlist": {
-      "all": false,
-      "shell": {
-        "all": false,
-        "open": true
-      },
-      "dialog": {
-        "all": true,
-        "ask": true,
-        "confirm": true,
-        "message": true,
-        "open": true,
-        "save": true
-      },
-      "path": {
-        "all": true
-      },
-      "fs": {
-        "all": true
-      },
-      "protocol": {
-        "all": false,
-        "asset": true,
-        "assetScope": ["**"]
-      },
-      "notification": {
-        "all": true
-      },
-      "window": {
-        "all": true
-      }
-    },
-    "bundle": {
-      "active": true,
-      "targets": "all",
-      "identifier": "com.tauri.lemon",
-      "icon": [
-        "icons/32x32.png",
-        "icons/128x128.png",
-        "icons/128x128@2x.png",
-        "icons/icon.icns",
-        "icons/icon.ico"
-      ]
-    },
+  "productName": "lemon-tools",
+  "version": "0.0.1",
+  "identifier": "com.tauri.lemon",
+  "plugins": {},
+  "app": {
+    "withGlobalTauri": true,
+    "macOSPrivateApi": true,
     "security": {
-      "csp": "default-src 'self'; img-src 'self' asset: https://asset.localhost; media-src 'self' asset: https://asset.localhost; style-src 'unsafe-inline' 'self'"
+      "assetProtocol": {
+        "scope": ["**"],
+        "enable": true
+      },
+      "capabilities": [
+        {
+          "identifier": "my-capability",
+          "description": "My application capability used for all windows",
+          "windows": ["*"],
+          "permissions": [
+            "path:default",
+            "event:default",
+            "window:default",
+            "app:default",
+            "resources:default",
+            "menu:default",
+            "tray:default",
+            "notification:allow-is-permission-granted",
+            "notification:default",
+            "webview:allow-create-webview-window",
+            "window:allow-close",
+            "window:allow-start-dragging"
+          ]
+        }
+      ],
+      "csp": "default-src 'self'; img-src 'self' asset: https://asset.localhost; media-src 'self' asset: https://asset.localhost; style-src 'unsafe-inline' 'self'; connect-src ipc: http://ipc.localhost"
     },
     "windows": [
       {
@@ -64,9 +58,9 @@
         "resizable": true,
         "title": "lemon tools",
         "width": 1200,
-        "height": 900
+        "height": 900,
+        "transparent": false
       }
-    ],
-    "macOSPrivateApi": true
+    ]
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { convertFileSrc } from '@tauri-apps/api/tauri';
+import { convertFileSrc } from '@tauri-apps/api/core';
 import { appDataDir, join } from '@tauri-apps/api/path';
 import { observer } from 'mobx-react';
 import { Outlet, useNavigate } from 'react-router-dom';
