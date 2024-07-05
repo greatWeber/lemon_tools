@@ -8,6 +8,7 @@ import { useStores } from '@/store';
 import Layouts from './layouts';
 import Keyboard from './lib/keyboard';
 import Finder from './pages/finder';
+import EnergyBar from './pages/energy-bar';
 
 function App() {
   const { systemStore } = useStores();
@@ -27,6 +28,10 @@ function App() {
     {
       path: '/windowFinder',
       element: <Finder />,
+    },
+    {
+      path: '/energyBar',
+      element: <EnergyBar />,
     },
   ]);
   return (
